@@ -72,7 +72,7 @@ Ogni array dell'accumulatore corrsiponderà all'array richiesto sopra
 
 const [studentsNames, over70GradesStudents, selectedStudents] = students.reduce((acc, student) => {
     //Inserisco il nome dello studente nel primo array
-    acc[0].push(student.name);
+    acc[0].push(student.name.toUpperCase());
     //Se la somma dei voti dello studente è > 70 lo inserisco nel secondo array
     if(student.grades > 70){
         acc[1].push(student);
