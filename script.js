@@ -120,3 +120,80 @@ const lighterBike = bikes.reduce((acc, bike) => {
 
 
 console.log(`La marca di bici più leggera della lista è la ${lighterBike.name} e pesa ${lighterBike.weight}kg`);
+
+//SNACK 4
+
+//Creo un array di oggetti con le squadre
+const teams = [
+    {
+        name : 'Juventus',
+        points : 0,
+        fouls: 0
+    },
+    {
+        name : 'Milan',
+        points : 0,
+        fouls: 0
+    },
+    {
+        name : 'Inter',
+        points : 0,
+        fouls: 0
+    },
+    {
+        name : 'Napoli',
+        points : 0,
+        fouls: 0
+    },
+    {
+        name : 'Atalanta',
+        points : 0,
+        fouls: 0
+    },
+    {
+        name : 'Roma',
+        points : 0,
+        fouls: 0
+    },
+    {
+        name : 'Lazio',
+        points : 0,
+        fouls: 0
+    },
+    {
+        name : 'Bologna',
+        points : 0,
+        fouls: 0
+    },
+    {
+        name : 'Fiorentina',
+        points : 0,
+        fouls: 0
+    },
+    {
+        name : 'Torino',
+        points : 0,
+        fouls: 0
+    },
+]
+
+//Funzione di generazione di numeri casuali
+
+const getRandomNumber = (min, max) => Math.floor(Math.random() * (max + 1 - min) + min);
+
+//Assegno ad ogni squadra dei punti e dei falli subiti casuali
+
+teams.forEach(team => {
+    team.points = getRandomNumber(0,100);
+    team.fouls = getRandomNumber(0,100);
+})
+
+//Creo un array che contiene solamente i nomi delle squadre e i rispettivi falli subiti
+
+const foulsCompiledTeams = teams.reduce((acc, team) => {
+    acc.push({name : team.name, fouls : team.fouls});
+    return acc;
+},[]);
+
+//Stampo il nuovo array
+console.log(foulsCompiledTeams);
