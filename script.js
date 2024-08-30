@@ -19,7 +19,7 @@ const guestsTable = guests.map((guest, i) => {
 console.log(guestsTable);
 
 
-//SNACK 2
+// # SNACK 2
 
 const students = [
     {
@@ -84,3 +84,39 @@ const [studentsNames, over70GradesStudents, selectedStudents] = students.reduce(
 }, [[], [], []]);
 
 console.log(studentsNames, over70GradesStudents, selectedStudents);
+
+//SNACK 3
+
+//Creo un array di ogetti con le bici
+const bikes = [
+    {
+        name : 'Bianchi',
+        weight: 8
+    },
+    {
+        name : 'Colnago',
+        weight: 7.2
+    },
+    {
+        name : 'BMC',
+        weight: 7.9
+    },
+    {
+        name : 'Pinarello',
+        weight: 7.3
+    },
+    {
+        name : 'Cervelo',
+        weight: 7.5
+    },
+]
+
+//Trovo la bici dal peso minore e memorizzo, tramite destructuring, il nome e il peso relativi in due variabili
+
+const lighterBike = bikes.reduce((acc, bike) => {
+    if(acc.weight > bike.weight || acc.weight == 0) acc = bike;
+    return acc;
+},({name: '', weight: 0}))
+
+
+console.log(`La marca di bici più leggera della lista è la ${lighterBike.name} e pesa ${lighterBike.weight}kg`);
