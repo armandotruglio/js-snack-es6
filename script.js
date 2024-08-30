@@ -1,8 +1,8 @@
 //SNACK 1
 
 //Array con nomi di invitati
-const guests = ['Brad Pitt', 'Johnny Depp', 'Lady Gaga', 'Cristiano Ronaldo', 
-    'Georgina Rodriguez', 'Chiara Ferragni', 'George Clooney', 'Amal Clooney', 
+const guests = ['Brad Pitt', 'Johnny Depp', 'Lady Gaga', 'Cristiano Ronaldo',
+    'Georgina Rodriguez', 'Chiara Ferragni', 'George Clooney', 'Amal Clooney',
     'Fedez', 'Amadeus', 'Fiorello'];
 //Nome del Tavolo
 const tableName = 'Tavolo VIP';
@@ -12,7 +12,7 @@ const guestsTable = guests.map((guest, i) => {
     return {
         tableName: tableName,
         guestName: guest,
-        place: i+1
+        place: i + 1
     }
 });
 
@@ -74,10 +74,10 @@ const [studentsNames, over70GradesStudents, selectedStudents] = students.reduce(
     //Inserisco il nome dello studente nel primo array
     acc[0].push(student.name.toUpperCase());
     //Se la somma dei voti dello studente è > 70 lo inserisco nel secondo array
-    if(student.grades > 70){
+    if (student.grades > 70) {
         acc[1].push(student);
         //Se anche l'ID è > 120 allora lo inserisco anche nel terzo array
-        if(student.id > 120) acc[2].push(student);
+        if (student.id > 120) acc[2].push(student);
     }
 
     return acc;
@@ -90,23 +90,23 @@ console.log(studentsNames, over70GradesStudents, selectedStudents);
 //Creo un array di ogetti con le bici
 const bikes = [
     {
-        name : 'Bianchi',
+        name: 'Bianchi',
         weight: 8
     },
     {
-        name : 'Colnago',
+        name: 'Colnago',
         weight: 7.2
     },
     {
-        name : 'BMC',
+        name: 'BMC',
         weight: 7.9
     },
     {
-        name : 'Pinarello',
+        name: 'Pinarello',
         weight: 7.3
     },
     {
-        name : 'Cervelo',
+        name: 'Cervelo',
         weight: 7.5
     },
 ]
@@ -114,65 +114,67 @@ const bikes = [
 //Trovo la bici dal peso minore e memorizzo, tramite destructuring, il nome e il peso relativi in due variabili
 
 const lighterBike = bikes.reduce((acc, bike) => {
-    if(acc.weight > bike.weight || acc.weight == 0) acc = bike;
+    if (acc.weight > bike.weight || acc.weight == 0) acc = bike;
     return acc;
-},({name: '', weight: 0}))
+}, ({ name: '', weight: 0 }))
 
+//Acquisico elementi dal DOM
+const resultBike = document.getElementById('bike');
 
-console.log(`La marca di bici più leggera della lista è la ${lighterBike.name} e pesa ${lighterBike.weight}kg`);
+resultBike.innerText = `La marca di bici più leggera della lista è la ${lighterBike.name} e pesa ${lighterBike.weight}kg`;
 
 //SNACK 4
 
 //Creo un array di oggetti con le squadre
 const teams = [
     {
-        name : 'Juventus',
-        points : 0,
+        name: 'Juventus',
+        points: 0,
         fouls: 0
     },
     {
-        name : 'Milan',
-        points : 0,
+        name: 'Milan',
+        points: 0,
         fouls: 0
     },
     {
-        name : 'Inter',
-        points : 0,
+        name: 'Inter',
+        points: 0,
         fouls: 0
     },
     {
-        name : 'Napoli',
-        points : 0,
+        name: 'Napoli',
+        points: 0,
         fouls: 0
     },
     {
-        name : 'Atalanta',
-        points : 0,
+        name: 'Atalanta',
+        points: 0,
         fouls: 0
     },
     {
-        name : 'Roma',
-        points : 0,
+        name: 'Roma',
+        points: 0,
         fouls: 0
     },
     {
-        name : 'Lazio',
-        points : 0,
+        name: 'Lazio',
+        points: 0,
         fouls: 0
     },
     {
-        name : 'Bologna',
-        points : 0,
+        name: 'Bologna',
+        points: 0,
         fouls: 0
     },
     {
-        name : 'Fiorentina',
-        points : 0,
+        name: 'Fiorentina',
+        points: 0,
         fouls: 0
     },
     {
-        name : 'Torino',
-        points : 0,
+        name: 'Torino',
+        points: 0,
         fouls: 0
     },
 ]
@@ -184,16 +186,30 @@ const getRandomNumber = (min, max) => Math.floor(Math.random() * (max + 1 - min)
 //Assegno ad ogni squadra dei punti e dei falli subiti casuali
 
 teams.forEach(team => {
-    team.points = getRandomNumber(0,100);
-    team.fouls = getRandomNumber(0,100);
+    team.points = getRandomNumber(0, 100);
+    team.fouls = getRandomNumber(0, 100);
 })
 
 //Creo un array che contiene solamente i nomi delle squadre e i rispettivi falli subiti
 
 const foulsCompiledTeams = teams.reduce((acc, team) => {
-    acc.push({name : team.name, fouls : team.fouls});
+    acc.push({ name: team.name, fouls: team.fouls });
     return acc;
-},[]);
+}, []);
 
-//Stampo il nuovo array
-console.log(foulsCompiledTeams);
+//Recupero elementi dal DOM
+
+const resultTeams = document.getElementById('teams');
+
+//Stampo in pagina
+const result = foulsCompiledTeams.reduce((acc, team) => {
+    return acc += 
+    `
+    <tr>
+      <td>${team.name}</td>
+      <td>${team.fouls}</td>
+    </tr>
+    `
+}, ' ');
+
+resultTeams.innerHTML += result
