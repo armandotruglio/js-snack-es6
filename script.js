@@ -177,7 +177,7 @@ const teams = [
         points: 0,
         fouls: 0
     },
-]
+];
 
 //Funzione di generazione di numeri casuali
 
@@ -209,7 +209,7 @@ const result = foulsCompiledTeams.reduce((acc, team) => {
       <td>${team.name}</td>
       <td>${team.fouls}</td>
     </tr>
-    `
+    `;
 }, ' ');
 
-resultTeams.innerHTML += result
+resultTeams.innerHTML += result;
