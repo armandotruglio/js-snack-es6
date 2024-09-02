@@ -85,11 +85,12 @@ const people = [
     },
 ]
 
-const drivers = people.reduce((acc, person) => {
-    if (person.age >= 18) 
-        acc.push(`Il sig. ${person.lastName} ${person.firstName} è abilitato a conseguire una patente di guida in quanto maggiorenne`);
-    return acc;
-}, []);
+const drivers = people.map(person => {
+    if(person.age >= 18)
+        return `Il sig. ${person.lastName} ${person.firstName} è abilitato a conseguire una patente di guida in quanto maggiorenne`;
+    else
+    return `Il sig. ${person.lastName} ${person.firstName} NON è abilitato a conseguire una patente di guida in quanto minorenne`
+})
 
 console.log(drivers);
 
